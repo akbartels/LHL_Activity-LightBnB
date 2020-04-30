@@ -12,11 +12,11 @@ VALUES ('Straw House', 'description', 1, 'coverphotourl', 'thumbnailurl', 50, 1,
 
 
 INSERT INTO reservations (property_id, guest_id, start_date, end_date)
-VALUES (1, 4, '2019-04-01', '2019-04-04'),
-(2, 4, '2019-04-05', '2019-04-08'),
-(3, 4, '2019-04-09', '2019-04-13'),
-(2, 1, '2019-05-01', '2019-05-05'),
-(3, 2, '2019-06-01', '2019-06-05');
+VALUES (1, 4, '2021-04-01', '2021-04-04'),
+(2, 4, '2021-04-05', '2021-04-08'),
+(3, 4, '2020-04-09', '2020-04-13'),
+(2, 1, '2021-05-01', '2021-05-05'),
+(3, 2, '2021-06-01', '2021-06-05');
 
 
 INSERT INTO property_reviews (guest_id, property_id, reservation_id, rating, message)
@@ -24,3 +24,16 @@ VALUES (4, 2, 1, 2, 'message'),
 (4, 3, 2, 1, 'message'),
 (1, 2, 3, 5, 'message'),
 (2, 3, 4, 5, 'message');
+
+
+-- SELECT users.name, users.email, users.id, COUNT(reservations.id) AS count
+-- FROM users
+-- JOIN reservations ON users.id = guest_id
+-- GROUP BY users.name, users.email, users.id
+-- HAVING COUNT(reservations.id) > 4
+-- LIMIT 5;
+
+
+-- SELECT *
+-- FROM reservations
+-- WHERE guest_id = 255;
