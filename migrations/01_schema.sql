@@ -29,7 +29,7 @@ CREATE TABLE properties (
   street VARCHAR(255) NOT NULL,
   city VARCHAR(255) NOT NULL,
   province VARCHAR(255) NOT NULL,
-  postal_code VARCHAR(255) NOT NULL,
+  post_code VARCHAR(255) NOT NULL,
   active BOOLEAN NOT NULL DEFAULT FALSE
   -- If we are setting the default value of cost/night to $0, my opinion would be to set the default of 'active' to FALSE so that if the cost isn't entered, the property won't be accessible for $0/night! Compass suggested TRUE.
 );

@@ -5,10 +5,10 @@ VALUES ('Little Piggy 1', 'lpiggy1@piggymail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvm
 ('Mr. Wolf', 'ilovebacon@wolfmail.com','$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.');
 
 
-INSERT INTO properties (owner_id, title, description, thumbnail_photo_url, cover_photo_url, cost_per_night, parking_spaces, number_of_bathrooms, number_of_bedrooms, country, street, city, province, postal_code)
-VALUES (1, 'Straw House', 'description', 'thumbnailurl', 'coverphotourl', 50, 1, 1, 1, 'Canada', 'Lane', 'Piggyville', 'Saskatchewan', 'P1G9Y1'),
-(2, 'Stick House', 'description', 'thumbnailurl', 'coverphotourl', 100, 1, 1, 2, 'Canada', 'Boulevard', 'Piggy Town', 'Saskatchewan', 'P1G9Y2'),
-(3, 'Brick House', 'description', 'thumbnailurl', 'coverphotourl', 50, 1, 2, 3, 'Canada', 'Cul de Sac', 'Piggy City', 'Saskatchewan', 'P1G9Y3');
+INSERT INTO properties (title, description, owner_id, cover_photo_url, thumbnail_photo_url, cost_per_night, parking_spaces, number_of_bathrooms, number_of_bedrooms, active, province, city, country, street, post_code)
+VALUES ('Straw House', 'description', 1, 'coverphotourl', 'thumbnailurl', 50, 1, 1, 1, true, 'Saskatchewan','Piggyville', 'Canada', 'Lane', 'P1G9Y1'),
+('Stick House', 'description', 2, 'thumbnailurl', 'coverphotourl', 100, 1, 1, 2, true, 'Saskatchewan','Piggy Town', 'Canada', 'Boulevard', 'P1G9Y2'),
+('Brick House', 'description', 3, 'thumbnailurl', 'coverphotourl', 50, 1, 2, 3, true, 'Saskatchewan','Piggy City', 'Canada', 'Cul de Sac', 'P1G9Y3');
 
 
 INSERT INTO reservations (property_id, guest_id, start_date, end_date)
