@@ -24,16 +24,3 @@ VALUES (4, 2, 1, 2, 'message'),
 (4, 3, 2, 1, 'message'),
 (1, 2, 3, 5, 'message'),
 (2, 3, 4, 5, 'message');
-
-
--- SELECT users.name, users.email, users.id, COUNT(reservations.id) AS count
--- FROM users
--- JOIN reservations ON users.id = guest_id
--- GROUP BY users.name, users.email, users.id
--- HAVING COUNT(reservations.id) > 4
--- LIMIT 5;
-
-
--- SELECT *
--- FROM reservations
--- WHERE guest_id = 255;
