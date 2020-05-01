@@ -27,7 +27,8 @@ const getUserWithEmail = function(email) {
  FROM users
  WHERE email = $1
  `, [email])
- .then((res) => res.rows[0]);
+ .then(res => res.rows[0])
+ .catch(error => error);
 }
 exports.getUserWithEmail = getUserWithEmail;
 
@@ -42,7 +43,8 @@ const getUserWithId = function(id) {
  FROM users
  WHERE id = $1;
  `, [id])
- .then((res) => res.rows[0]);
+ .then(res => res.rows[0])
+ .catch(error => error);
 }
 exports.getUserWithId = getUserWithId;
 
@@ -58,7 +60,8 @@ const addUser =  function(user) {
   VALUES ($1, $2, $3)
   RETURNING *;
   `, [user.name, user.email, user.password])
-  .then((res) => (res.rows[0]))
+  .then(res => res.rows[0])
+  .catch(error => error);
 }
 exports.addUser = addUser;
 
@@ -80,7 +83,8 @@ const getAllReservations = function(guest_id, limit = 10) {
   ORDER BY reservations.start_date
   LIMIT $2; 
   `, [guest_id, limit])
-  .then((res) => res.rows)
+  .then(res => res.rows)
+  .catch(error => error);
 }
 exports.getAllReservations = getAllReservations;
 
@@ -140,10 +144,10 @@ const getAllProperties = function(options, limit = 10) {
   LIMIT $${queryParams.length};   
   `;
   
-  console.log(queryString, queryParams)
   
   return pool.query(queryString, queryParams)
-  .then(res => res.rows);
+  .then(res => res.rows)
+  .catch(error => error);
   
 }
 exports.getAllProperties = getAllProperties;
@@ -155,9 +159,13 @@ exports.getAllProperties = getAllProperties;
  * @return {Promise<{}>} A promise to the property.
  */
 const addProperty = function(property) {
-  const propertyId = Object.keys(properties).length + 1;
-  property.id = propertyId;
-  properties[propertyId] = property;
-  return Promise.resolve(property);
+  return pool.query(
+    `INSERT INTO properties (owner_id, title, description, cover_photo_url, thumbnail_photo_url, cost_per_night, parking_spaces, number_of_bathrooms, number_of_bedrooms, province, city, country, street, post_code)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+    RETURNING *
+`,[property.owner_id, property.title, property.description, property.cover_photo_url, property.thumbnail_photo_url, property.cost_per_night, property.parking_spaces, property.number_of_bathrooms, property.number_of_bedrooms, property.province, property.city, property.country, property.street, property.post_code])
+  .then(res => (res.rows))
+  .catch(error => error);
 }
 exports.addProperty = addProperty;
+
